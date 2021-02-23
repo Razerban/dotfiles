@@ -22,28 +22,26 @@ source "${HOME}/.zplug/init.zsh"
 ###########################
 # HOMEBREW
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-export HOMEBREW_AUTO_UPDATE_SECS=604800# PostgreSQL
+export HOMEBREW_AUTO_UPDATE_SECS=604800
 # JAVA
-JAVA_HOME="$(/usr/libexec/java_home)"
-export JAVA_HOME
+export JAVA_HOME="$(/usr/libexec/java_home)"
+# QMK
+export QMK_HOME=~/DEV/qmk_firmware
 
 ###########################
 # ENVIRONMENT VARIABLES
 ###########################
 # System:
-if [[ -n "${SSH_CONNECTION}" ]]; then
-	export EDITOR='vi'
-else
-	export EDITOR='vi'
-fi
+export EDITOR='vi'
+export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 ###########################
 # ALIASES
 ###########################
 # User specific
-alias update='brew update; brew upgrade; brew cask upgrade'
-alias clean='brew cleanup'
+alias update='zplug update; brew update; brew upgrade'
+alias clean='zplug clean; brew cleanup'
 alias ping='ping -c 5'
 alias clear='clear;echo "Currently logged in on $(tty), as $USER in directory $PWD."'
 alias path='echo -e ${PATH//:/\\n}'
